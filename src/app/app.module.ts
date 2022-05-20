@@ -15,9 +15,6 @@ import { IconsModule } from '@progress/kendo-angular-icons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
-
-
-
 @NgModule({
   imports: [
     BrowserModule,

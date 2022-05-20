@@ -7,6 +7,7 @@ import {
   DataStateChangeEvent,
 } from '@progress/kendo-angular-grid';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -16,19 +17,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent implements OnInit {
   title = 'Sample-UI';
   opened = false;
-  constructor(private api: ApiHttpService) {}
+  constructor(private addEmployee: AppService) {}
 
-  ngOnInit(): void {
-    this.testApi();
-  }
+  ngOnInit(): void {}
 
-  testApi() {
-    this.api
-      .execSv<any>('Sample', 'Sample', 'SampleBusiness', 'GetAsync', '0001')
-      .subscribe((res) => {
-        console.log(res);
-      });
-  }
   public state: State = {
     skip: 0,
     take: 5,
@@ -80,7 +72,7 @@ export class AppComponent implements OnInit {
   openDialog() {
     this.opened = !this.opened;
   }
-  close(value){
-    this.opened=value;
+  close(value) {
+    this.opened = value;
   }
 }
