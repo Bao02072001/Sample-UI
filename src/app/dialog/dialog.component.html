@@ -1,0 +1,56 @@
+<div class="example-wrapper">
+  <kendo-window
+    title="Chỉnh sửa thông tin nhân viên"
+    *ngIf="openedd"
+    (close)="close()"
+    [minWidth]="250"
+    [width]="950"
+    [height]="550"
+  >
+    <form [formGroup]="formUser" class="k-form">
+      <div>
+        <label class="k-form-field">
+          <span>Mã NV</span>
+          <input kendoTextBox placeholder="Your Name" />
+        </label>
+
+        <label class="k-form-field">
+          <span>Chức vụ</span>
+          <input kendoTextBox placeholder="Your Last Name" />
+        </label>
+
+        <label class="k-form-field">
+          <span>Họ </span>
+          <input kendoTextBox placeholder="Your Last Name" />
+        </label>
+
+        <label class="k-form-field">
+          <span>Tên</span>
+          <input kendoTextBox placeholder="Your Last Name" />
+        </label>
+
+        <label class="k-form-field">
+          <span>Phòng ban</span>
+          <input kendoTextBox placeholder="Your Last Name" />
+        </label>
+
+        <label class="k-form-field">
+          <span>Chức danh</span>
+          <input kendoTextBox placeholder="Your Last Name" />
+        </label>
+      </div>
+
+      <div class="k-actions k-actions-end">
+        <button
+          kendoButton
+          themeColor="primary"
+          type="button"
+          (click)="submit()"
+        >
+          Lưu
+        </button>
+        <button kendoButton type="button" (click)="close()">Đóng</button>
+      </div>
+    </form>
+  </kendo-window>
+</div>

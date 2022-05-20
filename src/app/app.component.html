@@ -1,0 +1,59 @@
+<div class="form-group">
+  <kendo-treeview
+    [nodes]="data"
+    textField="text"
+    kendoTreeViewHierarchyBinding
+    childrenField="items"
+    [filterable]="true"
+    kendoTreeViewExpandable
+    [expandedKeys]="expandedKeys"
+  >
+  </kendo-treeview>
+  <div class="kendo-grid">
+    <ul class="kendo-items">
+      <li>Lọc DL</li>
+      <li>Xuất DL</li>
+      <li>Làm mới</li>
+      <li (click)="openDialog()">Thêm</li>
+    </ul>
+    <kendo-grid
+      [data]="gridData"
+      [skip]="state.skip"
+      [pageSize]="state.take"
+      [sort]="state.sort"
+      [filter]="state.filter"
+      [pageable]="true"
+      [filterable]="true"
+      (dataStateChange)="dataStateChange($event)"
+      [style]="{ 'text-align': 'center' }"
+    >
+      <kendo-grid-column field="userMaNV" title="Mã nhân viên" [width]="200">
+        <ng-template kendoGridHeaderTemplate let-column>
+          <strong appDirective>{{ column.title }}</strong>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="userName" title="Họ và tên" [width]="200">
+        <ng-template kendoGridHeaderTemplate let-column>
+          <strong appDirective>{{ column.title }}</strong>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="userPB" title="Tên phòng ban" [width]="200">
+        <ng-template kendoGridHeaderTemplate let-column>
+          <strong appDirective>{{ column.title }}</strong>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="userCV" title="Chức vụ" [width]="200">
+        <ng-template kendoGridHeaderTemplate let-column>
+          <strong appDirective>{{ column.title }}</strong>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="userCD" [width]="120" title="Chức danh">
+        <ng-template kendoGridHeaderTemplate let-column>
+          <strong appDirective>{{ column.title }}</strong>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+  </div>
+</div>
+
+<app-dialog [openedd]="opened"></app-dialog>
