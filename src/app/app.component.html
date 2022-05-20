@@ -11,10 +11,10 @@
   </kendo-treeview>
   <div class="kendo-grid">
     <ul class="kendo-items">
-      <li>Lọc DL</li>
-      <li>Xuất DL</li>
-      <li>Làm mới</li>
-      <li (click)="openDialog()">Thêm</li>
+      <li><span class="k-icon k-i-sort-asc"></span>Lọc DL</li>
+      <li><span class="k-icon k-i-arrows-swap"></span>Xuất DL</li>
+      <li><span class="k-icon k-i-reload"></span>Làm mới</li>
+      <li (click)="openDialog()"><span class="k-icon k-i-plus"></span>Thêm</li>
     </ul>
     <kendo-grid
       [data]="gridData"

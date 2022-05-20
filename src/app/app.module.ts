@@ -11,6 +11,8 @@ import { TreeViewModule } from '@progress/kendo-angular-treeview';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IconsModule } from '@progress/kendo-angular-icons';
+
 
 @NgModule({
   imports: [
@@ -24,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TreeViewModule,
     DialogsModule,
     ReactiveFormsModule,
+    IconsModule,
   ],
   declarations: [AppComponent, DialogComponent],
   bootstrap: [AppComponent],
