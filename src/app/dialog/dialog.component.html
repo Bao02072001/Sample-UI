@@ -1,42 +1,52 @@
-<div class="example-wrapper">
+<ng-template #formDialog  class="example-wrapper">
   <kendo-window
     title="Chỉnh sửa thông tin nhân viên"
     *ngIf="openedd"
     (close)="close()"
     [minWidth]="250"
     [width]="950"
-    [height]="550"
+    [height]="650"
   >
-    <form [formGroup]="formUser" class="k-form">
-      <div>
+    <div class="avatar">
+      <img class="avatar-user" src="https://www.section.io/engineering-education/authors/odiwuor-amos/avatar_hua38a14e6c6c04fae053b79e64c874ea7_83464_180x0_resize_q75_box.jpeg" alt="1234">
+      <span class="k-icon k-i-arrows-swap"></span>
+    </div>
+    <form [formGroup]="formUser" (ngSubmit)="onSubmit()">
+      <div class="k-form">
         <label class="k-form-field">
-          <span>Mã NV</span>
-          <input kendoTextBox placeholder="Your Name" />
+          <div class="error-mess">(*)</div>
+          <span class="form-label">Mã NV</span>
+          <input class="form-input" formControlName="maNV" kendoTextBox placeholder="Your Name" />
         </label>
 
         <label class="k-form-field">
-          <span>Chức vụ</span>
-          <input kendoTextBox placeholder="Your Last Name" />
+          <div class="error-mess">(*)</div>
+          <span class="form-label">Chức vụ</span>
+          <kendo-combobox [data]="dataChucvu" class="form-input" formControlName="chucVu" kendoTextBox ></kendo-combobox>
         </label>
 
         <label class="k-form-field">
-          <span>Họ </span>
-          <input kendoTextBox placeholder="Your Last Name" />
+          <div class="error-mess">(*)</div>
+          <span class="form-label">Họ </span>
+          <input class="form-input" formControlName="ho" kendoTextBox placeholder="Your Last Name" />
         </label>
 
         <label class="k-form-field">
-          <span>Tên</span>
-          <input kendoTextBox placeholder="Your Last Name" />
+          <div class="error-mess">(*)</div>
+          <span class="form-label">Tên</span>
+          <input class="form-input" formControlName="ten" kendoTextBox placeholder="Your Last Name" />
         </label>
 
         <label class="k-form-field">
-          <span>Phòng ban</span>
-          <input kendoTextBox placeholder="Your Last Name" />
+          <div class="error-mess">(*)</div>
+          <span class="form-label">Phòng ban</span>
+          <input class="form-input" formControlName="phongB" kendoTextBox placeholder="Your Last Name" />
         </label>
 
         <label class="k-form-field">
-          <span>Chức danh</span>
-          <input kendoTextBox placeholder="Your Last Name" />
+          <div class="error-mess">(*)</div>
+          <span class="form-label">Chức danh</span>
+          <kendo-combobox [data]="dataChucdanh" class="form-input" formControlName="chucD" kendoTextBox ></kendo-combobox>
         </label>
       </div>
 
@@ -45,7 +55,6 @@
           kendoButton
           themeColor="primary"
           type="button"
-          (click)="submit()"
         >
           Lưu
         </button>
@@ -53,4 +62,6 @@
       </div>
     </form>
   </kendo-window>
-</div>
+</ng-template>
+<div [ngTemplateOutlet]="formDialog"></div>
+

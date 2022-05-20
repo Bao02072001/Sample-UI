@@ -19,16 +19,16 @@ export class AppComponent implements OnInit {
   constructor(private api: ApiHttpService) {}
 
   ngOnInit(): void {
-    // this.testApi();
+    this.testApi();
   }
 
-  // testApi() {
-  //   this.api
-  //     .execSv<any>('Sample', 'Sample', 'SampleBusiness', 'GetAsync', '0001')
-  //     .subscribe((res) => {
-  //       console.log(res);
-  //     });
-  // }
+  testApi() {
+    this.api
+      .execSv<any>('Sample', 'Sample', 'SampleBusiness', 'GetAsync', '0001')
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
   public state: State = {
     skip: 0,
     take: 5,
@@ -76,7 +76,11 @@ export class AppComponent implements OnInit {
     lamM: new FormControl(''),
     them: new FormControl(''),
   });
+
   openDialog() {
     this.opened = !this.opened;
+  }
+  close(value){
+    this.opened=value;
   }
 }

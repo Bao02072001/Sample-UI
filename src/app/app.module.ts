@@ -12,6 +12,10 @@ import { DialogComponent } from './dialog/dialog.component';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IconsModule } from '@progress/kendo-angular-icons';
+import { LayoutModule } from '@progress/kendo-angular-layout';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+
+
 
 
 @NgModule({
@@ -27,6 +31,8 @@ import { IconsModule } from '@progress/kendo-angular-icons';
     DialogsModule,
     ReactiveFormsModule,
     IconsModule,
+    LayoutModule,
+    DropDownsModule,
   ],
   declarations: [AppComponent, DialogComponent],
   bootstrap: [AppComponent],
