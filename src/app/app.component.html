@@ -1,14 +1,32 @@
 <div class="form-group">
   <kendo-treeview
     [nodes]="data"
+    (nodeClick)="show()"
     textField="text"
     kendoTreeViewHierarchyBinding
     childrenField="items"
     [filterable]="true"
     kendoTreeViewExpandable
-    [expandedKeys]="expandedKeys"
+    kendoTreeViewSelectable
+    selectBy="text"
+    [hasChildren]="hasChildren"
+    [children]="fetchChildren"
+    [(selectedKeys)]="selectedKeys"
   >
   </kendo-treeview>
+  <!-- <kendo-treeview
+    [nodes]="data"
+    textField="text"
+    (nodeClick)="show()"
+    [hasChildren]="hasChildren"
+    [children]="fetchChildren"
+    kendoTreeViewExpandable
+    [expandedKeys]="expandedKeys"
+    [kendoTreeViewSelectable]="selection"
+    selectBy="text"
+    [(selectedKeys)]="selectedKeys"
+  >
+  </kendo-treeview> -->
   <div class="kendo-grid">
     <ul class="kendo-items">
       <li><span class="k-icon k-i-sort-asc"></span>Lọc DL</li>
@@ -27,31 +45,39 @@
       (dataStateChange)="dataStateChange($event)"
       [style]="{ 'text-align': 'center' }"
     >
-      <kendo-grid-column field="userMaNV" title="Mã nhân viên" [width]="200">
+      <kendo-grid-column field="userMa" title="Mã nhân viên" [width]="150">
         <ng-template kendoGridHeaderTemplate let-column>
           <strong appDirective>{{ column.title }}</strong>
         </ng-template>
       </kendo-grid-column>
-      <kendo-grid-column field="userName" title="Họ và tên" [width]="200">
+      <kendo-grid-column field="userName" title="Họ và tên" [width]="150">
         <ng-template kendoGridHeaderTemplate let-column>
           <strong appDirective>{{ column.title }}</strong>
         </ng-template>
       </kendo-grid-column>
-      <kendo-grid-column field="userPB" title="Tên phòng ban" [width]="200">
+      <kendo-grid-column field="userPB" title="Tên phòng ban" [width]="150">
         <ng-template kendoGridHeaderTemplate let-column>
           <strong appDirective>{{ column.title }}</strong>
         </ng-template>
       </kendo-grid-column>
-      <kendo-grid-column field="userCV" title="Chức vụ" [width]="200">
+      <kendo-grid-column field="userCV" title="Chức vụ" [width]="150">
         <ng-template kendoGridHeaderTemplate let-column>
           <strong appDirective>{{ column.title }}</strong>
         </ng-template>
       </kendo-grid-column>
-      <kendo-grid-column field="userCD" [width]="120" title="Chức danh">
+      <kendo-grid-column field="userCD" [width]="150" title="Chức danh">
         <ng-template kendoGridHeaderTemplate let-column>
           <strong appDirective>{{ column.title }}</strong>
         </ng-template>
       </kendo-grid-column>
+      <kendo-grid-command-column title="Xóa" [width]="150">
+        <ng-template kendoGridHeaderTemplate let-column>
+          <strong appDirective>{{ column.title }}</strong>
+        </ng-template>
+        <ng-template kendoGridCellTemplate >
+          <button class="buttonRemove" kendoGridRemoveCommand (click)="removeUser()">Xóa</button>
+        </ng-template>
+      </kendo-grid-command-column>
     </kendo-grid>
   </div>
 </div>

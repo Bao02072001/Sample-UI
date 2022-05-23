@@ -5,10 +5,12 @@ import { sampleUser } from './user';
 import {
   GridDataResult,
   DataStateChangeEvent,
+  SelectableSettings,
 } from '@progress/kendo-angular-grid';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AppService } from './app.service';
-
+import { User } from './model/user';
+import { of, sample } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,31 +19,41 @@ import { AppService } from './app.service';
 export class AppComponent implements OnInit {
   title = 'Sample-UI';
   opened = false;
-  constructor(private addEmployee: AppService) {}
-
-  ngOnInit(): void {}
-
-  public state: State = {
+  selectedKeys: any[] = [];
+  users: any[];
+  public hasChildren = (item: any) => item.items && item.items.length > 0;
+  public fetchChildren = (item: any) => of(item.items);
+  state: State = {
     skip: 0,
     take: 5,
 
     // Initial filter descriptor
     filter: {
       logic: 'or',
-      filters: [{ field: 'userMaNV', operator: 'contains', value: '' }],
+      filters: [{ field: 'userMa', operator: 'contains', value: '' }],
     },
   };
+  gridData: GridDataResult;
 
-  public gridData: GridDataResult = process(sampleUser, this.state);
+  constructor(private EmployeeService: AppService) {}
+
+  ngOnInit(): void {
+    this.EmployeeService.getEmployee().subscribe((res) => {
+      this.users=res;
+      this.gridData = process(this.users, this.state);
+    });
+
+  }
 
   public dataStateChange(state: DataStateChangeEvent): void {
     this.state = state;
-    this.gridData = process(sampleUser, this.state);
+    this.gridData = process(this.users, this.state);
   }
 
-  public expandedKeys: any[] = ['0', '1'];
+  // public expandedKeys: any[] = ['0', '1'];
 
-  public checkedKeys: any[] = ['0_1'];
+  // public checkedKeys: any[] = ['0_1'];
+  // public selection: SelectableSettings = { mode: "multiple" };
 
   public data: any[] = [
     {
@@ -59,8 +71,12 @@ export class AppComponent implements OnInit {
         },
       ],
     },
-    ,
   ];
+
+
+  public expandedKeys: any[] = ["0", "1"];
+
+  public selection: SelectableSettings = { mode: "multiple" };
 
   items = new FormGroup({
     locDL: new FormControl(''),
@@ -74,5 +90,15 @@ export class AppComponent implements OnInit {
   }
   close(value) {
     this.opened = value;
+  }
+
+  show() {
+   this.EmployeeService.updateEmployee(this.selectedKeys).subscribe(res => {
+     this.users = res;
+     this.gridData = process(this.users, this.state)
+   });
+  }
+  removeUser(){
+    console.log('Remove');
   }
 }

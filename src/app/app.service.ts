@@ -1,34 +1,43 @@
 import { Injectable } from '@angular/core';
 import { ApiHttpService } from 'src/core/services/apihttp/apihttp.service';
+import { User } from './model/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
   constructor(private apiService: ApiHttpService) {}
-
-  addEmployee(data: any) {
-    this.apiService.execSv<any>(
+  getEmployee() {
+    return this.apiService.execSv<any>(
       'Sample',
       'Sample',
-      'EmployeeBusiness',
-      'AddEmployeeAsync',
-      [data]
+      'UserBusiness',
+      'GetAsync'
     );
   }
 
-  updateEmployee(id: string) {
-    this.apiService.execSv<any>(
+  addEmployee(data: any) {
+    return this.apiService.execSv<any>(
       'Sample',
       'Sample',
-      'EmployeeBusiness',
-      'UpdateEmployeeAsync',
-      [id]
+      'UserBusiness',
+      'AddUserAsync',
+      data
+    );
+  }
+
+  updateEmployee(data:any) {
+    return this.apiService.execSv<any>(
+      'Sample',
+      'Sample',
+      'DepartmentBusiness',
+      'GetAsync',
+      data
     );
   }
 
   removeEmployee(id: string) {
-    this.apiService.execSv<any>(
+    return this.apiService.execSv<any>(
       'Sample',
       'Sample',
       'EmployeeBusiness',
