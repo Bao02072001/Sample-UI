@@ -5,6 +5,10 @@ kendo-treeview {
     display: flex;
     justify-content: center;
 }
+.furniture{
+    width: 250px;
+    height: 35px;
+}
 .kendo-grid{
     width:80%;
 }
@@ -16,7 +20,7 @@ kendo-treeview {
         padding: 10px;
         margin-left:10px;
         font-size: 16px;
-        cursor:pointer;
+        
         border-radius:10px;
         background-color: orange;
     }
@@ -24,12 +28,36 @@ kendo-treeview {
         opacity:0.8;
         color: orange;
         color:black;
+        cursor:pointer;
     }
 }
 .buttonRemove{
-    outline: none;
+    width: 50px;
+    border: 1px solid #fff;
     padding: 10px;
     border-radius: 10px;
     background-color: orange;
     color: #000;
+    margin-left: 10px;
+    buttonRemove:hover{
+        opacity:0.8;
+        color: orange;
+        color:black;
+        cursor:pointer;
+    }
+}
+.buttonEdit{
+    width: 50px;
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 10px;
+    color: #000;
+    margin-left: 10px;
+    buttonEdit:hover{
+        opacity:0.8;
+        color: orange;
+        color:black;
+        cursor:pointer;
+    }
+    
 }

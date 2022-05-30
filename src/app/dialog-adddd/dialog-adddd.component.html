@@ -1,7 +1,7 @@
-<ng-template #formDialog class="example-wrapper">
+<ng-template #formDialog class="examplew-wrapper">
   <kendo-window
-    title="Chỉnh sửa thông tin nhân viên"
-    *ngIf="openedd"
+    title="Thêm mới thông tin nhân viên"
+    *ngIf="isNew"
     (close)="closeForm()"
     [minWidth]="250"
     [width]="950"
@@ -14,7 +14,12 @@
           class="avatar-user"
           style="width: 250px; height: 200px"
         />
-        <input type="file" #Image accept="image/*" />
+        <input
+          type="file"
+          #Image
+          accept="image/*"
+          (change)="handleFileInput($event)"
+        />
         <span class="k-icon k-i-arrows-swap"></span>
       </div>
       <div class="k-form">
@@ -25,7 +30,7 @@
             class="form-input"
             formControlName="maNV"
             kendoTextBox
-            placeholder="Your Name"
+            placeholder="Value"
             required
           />
         </label>
@@ -49,7 +54,7 @@
             class="form-input"
             formControlName="ho"
             kendoTextBox
-            placeholder="Your Last Name"
+            placeholder="Value"
             required
           />
         </label>
@@ -61,7 +66,7 @@
             class="form-input"
             formControlName="ten"
             kendoTextBox
-            placeholder="Your Last Name"
+            placeholder="Value"
             required
           />
         </label>
@@ -75,10 +80,10 @@
             childrenField="items"
             textField="text"
             valueField="text"
-            [dataItem]="dataItem"
             class="form-input"
             formControlName="phongB"
             valuePrimitive="true"
+            required
           >
           </kendo-dropdowntree>
         </label>
@@ -102,10 +107,10 @@
           themeColor="primary"
           type="button"
           [disabled]="!formAdd"
-          (click)="EditUser($event)"
+          (click)="AddUser($event)"
           [disabled]="!formAdd.valid"
         >
-          Sửa
+          Thêm
         </button>
         <button kendoButton type="button" (click)="closeForm()">Đóng</button>
       </div>

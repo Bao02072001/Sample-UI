@@ -7,6 +7,7 @@ import { User } from './model/user';
 })
 export class AppService {
   constructor(private apiService: ApiHttpService) {}
+  //getData
   getEmployee() {
     return this.apiService.execSv<any>(
       'Sample',
@@ -15,7 +16,54 @@ export class AppService {
       'GetAsync'
     );
   }
+  //load Phong ban
+  loadEmployee() {
+    return this.apiService.execSv<any>(
+      'Sample',
+      'Sample',
+      'RoomBusiness',
+      'GetAsync'
+    );
+  }
+  //load name selected
+  loadSelectedEmployee(data: string) {
+    return this.apiService.execSv<any>(
+      'Sample',
+      'Sample',
+      'TreeviewBusiness',
+      'GetChildsNodeNameAsync',
+      data
+    );
+  }
 
+  loadDepartEmployee(data) {
+    return this.apiService.execSv<any>(
+      'Sample',
+      'Sample',
+      'UserBusiness',
+      'GetByDepartmentAsync',
+      data
+    );
+  }
+  //Load chuc danh
+  loadNameEmployee() {
+    return this.apiService.execSv<any>(
+      'Sample',
+      'Sample',
+      'NameBusiness',
+      'GetAsync'
+    );
+  }
+  //load tree view
+  loadTreeViewEmployee() {
+    return this.apiService.execSv<any>(
+      'Sample',
+      'Sample',
+      'TreeviewBusiness',
+      'GetBuildTreeAsync'
+    );
+  }
+  //Add
   addEmployee(data: any) {
     return this.apiService.execSv<any>(
       'Sample',
@@ -25,8 +73,8 @@ export class AppService {
       data
     );
   }
-
-  updateEmployee(data:any) {
+  //Load PB
+  updateEmployee(data: any) {
     return this.apiService.execSv<any>(
       'Sample',
       'Sample',
@@ -36,13 +84,34 @@ export class AppService {
     );
   }
 
-  removeEmployee(id: string) {
+  //Load image
+  loadImageEmployee(data: any) {
     return this.apiService.execSv<any>(
       'Sample',
       'Sample',
-      'EmployeeBusiness',
-      'RemoveEmployeeAsync',
-      [id]
+      'ImageBusiness',
+      'GetAsync',
+      data
+    );
+  }
+  //Edit
+  editEmployee(data: any) {
+    return this.apiService.execSv<any>(
+      'Sample',
+      'Sample',
+      'UserBusiness',
+      'EditUserAsync',
+      data
+    );
+  }
+  //Remove
+  removeEmployee(data: any) {
+    return this.apiService.execSv<any>(
+      'Sample',
+      'Sample',
+      'NewBusiness',
+      'DelAsync',
+      data
     );
   }
 }

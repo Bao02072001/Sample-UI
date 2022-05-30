@@ -1,0 +1,41 @@
+.k-form{
+    margin: 30px;
+    display:grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 50px 50px 50px;
+    grid-gap: 30px;
+    
+}
+.k-form-field{
+    display: flex ;
+}
+.form-input{
+    float: right;
+    width: calc(100% - 100px);
+    outline: 1px solid orange;
+}
+.form-label{
+    font-size: 15px;
+    width: 100px;
+    padding-left: 5px;
+}
+.avatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.avatar-user{
+    width: 200px;
+    height: 200px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.buttonImage{
+    padding: 10px;
+    color: #000;
+    background-color: orange;
+}
+.error-mess{
+    color: red;
+}

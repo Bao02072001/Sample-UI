@@ -14,6 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IconsModule } from '@progress/kendo-angular-icons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { DialogAddComponent } from './dialog-add/dialog-add.component';
+import { DialogAddddComponent } from './dialog-adddd/dialog-adddd.component';
+
 
 @NgModule({
   imports: [
@@ -31,7 +34,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     LayoutModule,
     DropDownsModule,
   ],
-  declarations: [AppComponent, DialogComponent],
+  declarations: [AppComponent, DialogComponent, DialogAddComponent, DialogAddddComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

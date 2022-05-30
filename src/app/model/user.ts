@@ -6,4 +6,5 @@ export class User{
     public UserFirstN:string;
     public UserPB:string;
     public UserCD:string;
+    public UserAva:string;
 }
